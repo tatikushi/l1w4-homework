@@ -1,7 +1,7 @@
 var links, update, updateButtons, contentEl, navEl;
 
-contentEl = document.querySelector('.content');
-navEl = document.querySelector('.nav');
+contentEl = document.getElementById('content');
+navEl = document.getElementById('navigation');
 
 links = {
     love: 'Joseph Brodsky «Love»',
@@ -17,28 +17,33 @@ update = function (state) {
 
 updateButtons = function (state) {
     [].slice.call(navEl.querySelectorAll('A')).forEach(function (element) {
-            const classList = element.classList;
-            state.page === element.getAttribute('href')
-                ? classList.add('active')
-                : classList.remove('active');
-        })
+        const classList = element.classList;
+        state.page === element.getAttribute('href')
+            ? classList.add('active')
+            : classList.remove('active');
+    })
 };
+
 window.addEventListener('popstate', function (element) {
     update(element.state);
 });
+
 navEl.addEventListener('click', function (element) {
     element.preventDefault();
     var state;
-    if (element.target.tagName !== 'A') return;
+    if (element.target.tagName !== 'A') {
+        return;
+    };
+
+    var page = element.target.getAttribute('href');
+    page = page.replace('#', '');
 
     state = {
-        page: element.target.getAttribute('href')
+        page: page
     };
     history.pushState(state, '', state.page);
     update(state);
     element.preventDefault();
-
 });
-
 
 
