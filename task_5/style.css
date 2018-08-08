@@ -1,0 +1,14 @@
+h1 {
+    text-align: center;
+}
+main {
+    display: flex;
+    justify-content: center;
+
+}
+a {
+    color: #000000;
+    margin: 0 20px;
+}
+.active {
+    color: #6f1651
