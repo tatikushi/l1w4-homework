@@ -16,7 +16,7 @@ update = function (state) {
 };
 
 updateButtons = function (state) {
-    [].slice.call(navEl.querySelectorAll('A')).forEach(function (element) {
+    Array.slice.call(navEl.querySelectorAll('A')).forEach(function (element) {
         const classList = element.classList;
         '#' + state.page === element.getAttribute('href')
             ? classList.add('active')
@@ -33,7 +33,8 @@ navEl.addEventListener('click', function (element) {
     var state;
     if (element.target.tagName !== 'A') {
         return;
-    };
+    }
+    ;
 
     var page = element.target.getAttribute('href');
     page = page.replace('#', '');
