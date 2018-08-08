@@ -16,7 +16,7 @@ update = function (state) {
 };
 
 updateButtons = function (state) {
-    Array.slice.call(navEl.querySelectorAll('A')).forEach(function (element) {
+    [].slice.call(navEl.querySelectorAll('A')).forEach(function (element) {
         const classList = element.classList;
         '#' + state.page === element.getAttribute('href')
             ? classList.add('active')
